@@ -1,26 +1,83 @@
 @import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg:        #fafafa;
+  --card:      #ffffff;
+  --border:    rgba(0,0,0,0.08);
+  --text:      #111111;
+  --muted:     #666666;
+  --accent:    #7c3aed;
+
+  /* Pre-computed opacity variants (update both :root and .dark) */
+  --accent-5:  rgb(124 58 237 / 0.05);
+  --accent-10: rgb(124 58 237 / 0.10);
+  --accent-20: rgb(124 58 237 / 0.20);
+  --accent-30: rgb(124 58 237 / 0.30);
+  --accent-40: rgb(124 58 237 / 0.40);
+  --accent-50: rgb(124 58 237 / 0.50);
+  --bg-90:     rgb(250 250 250 / 0.90);
+  --bg-95:     rgb(250 250 250 / 0.95);
+}
+.dark {
+  --bg:        #080808;
+  --card:      #101010;
+  --border:    rgba(255,255,255,0.07);
+  --text:      #ececec;
+  --muted:     #777777;
+  --accent:    #a78bfa;
+
+  --accent-5:  rgb(167 139 250 / 0.05);
+  --accent-10: rgb(167 139 250 / 0.10);
+  --accent-20: rgb(167 139 250 / 0.20);
+  --accent-30: rgb(167 139 250 / 0.30);
+  --accent-40: rgb(167 139 250 / 0.40);
+  --accent-50: rgb(167 139 250 / 0.50);
+  --bg-90:     rgb(8 8 8 / 0.90);
+  --bg-95:     rgb(8 8 8 / 0.95);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    transition: background-color 0.25s, color 0.25s;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+/* Gradient text */
+.grad-text {
+  background: linear-gradient(180deg, var(--text) 0%, color-mix(in srgb, var(--text) 30%, transparent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Marquee */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 30s linear infinite; }
+.marquee-track:hover { animation-play-state: paused; }
+
+/* Glow blob */
+.glow {
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  position: absolute;
 }
