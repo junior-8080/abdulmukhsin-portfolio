@@ -26,12 +26,12 @@ export default function Hero() {
       <div className="relative max-w-5xl mx-auto w-full px-6 pt-28 pb-20 text-center">
 
         {/* Status pill */}
-        <motion.div {...anim(0)} className="flex justify-center mb-8">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--border)] bg-[var(--card)] text-sm text-[var(--muted)]">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"/>
-            Available for new opportunities
-          </span>
-        </motion.div>
+        {/*<motion.div {...anim(0)} className="flex justify-center mb-8">*/}
+        {/*  <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--border)] bg-[var(--card)] text-sm text-[var(--muted)]">*/}
+        {/*    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"/>*/}
+        {/*    Available for new opportunities*/}
+        {/*  </span>*/}
+        {/*</motion.div>*/}
 
         {/* Heading */}
         <motion.h1 {...anim(0.08)} className="font-bold tracking-tight leading-[1.05] mb-6">

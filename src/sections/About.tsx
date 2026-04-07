@@ -6,8 +6,8 @@ const vp   = { once: true, margin: '-60px' };
 
 const facts = [
   { label: 'Location', value: 'Accra, Ghana' },
-  { label: 'Focus',    value: 'Backend & API Engineering' },
-  { label: 'Status',   value: '🟢 Open to work' },
+  { label: 'Focus',    value: 'Frontend,Backend & API Engineering' },
+  // { label: 'Status',   value: '🟢 Open to work' },
 ];
 
 const stats = [
